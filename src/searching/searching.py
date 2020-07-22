@@ -31,6 +31,33 @@ print(binary_search(arr, 9, 0, len(arr)))
 # sorted in ascending order or in descending order
 # You can implement this function either recursively 
 # or iteratively
-def agnostic_binary_search(arr, target):
-    # Your code here
-    pass 
+def agnostic_binary_search(arr, target):    # iterate the array by creating a low pointer and high pointer(last item in the list)
+    low = 0
+    high = len(arr) -1
+    #create a loop that will continue while low is less than or equel to the hig pointer
+    while low <= high:
+        #get middle index
+        midd_point = (low + high) // 2
+        #retrieve the item with that index from list
+        guess = arr[midd_point]
+        #There are three options, correct, too high or too low
+        if guess == target:
+            return midd_point
+        if arr[low] <= arr[high]: #ascending
+            if guess > target:
+                high = midd_point - 1
+
+            else:
+                low = midd_point + 1
+        else:
+            if target > arr[midd_point]: #descending
+                high = midd_point -1 #target can be in first half
+            else: #target > arr[middle]
+                low = midd_point + 1 #target can be in second half
+
+
+    return -1  # not found
+    
+ascending = [2, 4, 12, 14, 17, 30, 46, 47, 51, 54, 61]
+descending = [101, 98, 57, 49, 45, 13, -3, -17, -61]
+print(agnostic_binary_search(ascending, 14))
