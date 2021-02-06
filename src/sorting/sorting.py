@@ -3,7 +3,7 @@ def merge(arrA, arrB):
     num_elements = len(arrA) + len(arrB)
     print("arrA", arrA)
     print("arrB", arrB)
-    #merged_arr = [0] * elements
+    #merged_arr = [0] * num_elements - allocates all needed memory up front
     merged_arr = []
 
     # Starting at the beginning of "a" and "b"
